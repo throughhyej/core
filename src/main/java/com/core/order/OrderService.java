@@ -1,4 +1,4 @@
-package com.core.orders;
+package com.core.order;
 
 public interface OrderService {
     Order createOrder(Long memberId, String itemName, int itemPrice);

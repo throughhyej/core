@@ -1,6 +1,6 @@
-package com.core.orders;
+package com.core.order;
 
-import com.core.members.Member;
+import com.core.member.Member;
 
 public interface DiscountPolicy {
     int discount(Member member, int price);

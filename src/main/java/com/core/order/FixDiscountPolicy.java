@@ -1,7 +1,7 @@
-package com.core.orders;
+package com.core.order;
 
-import com.core.members.Grade;
-import com.core.members.Member;
+import com.core.member.Grade;
+import com.core.member.Member;
 
 public class FixDiscountPolicy implements DiscountPolicy {
 
