@@ -20,6 +20,7 @@ public class BeanDefinitionTest {
     public void getBeanDefinition() {
         String[] beanNames = ac.getBeanDefinitionNames();
         for (String beanName : beanNames) {
+            /* ApplicationContext 인터페이스에는 getBeanDefinition(beanName)가 존재하지 않아 구현체 이용 */
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanName);
             if (beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
                 System.out.println("beanName = " + beanName + ", definition = " + beanDefinition);
