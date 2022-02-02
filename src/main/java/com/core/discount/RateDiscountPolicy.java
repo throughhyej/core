@@ -1,4 +1,4 @@
-package com.core.order;
+package com.core.discount;
 
 import com.core.member.Grade;
 import com.core.member.Member;
