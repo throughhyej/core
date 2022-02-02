@@ -1,5 +1,6 @@
-package com.core;
+package com.core.findBeans;
 
+import com.core.AppConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -8,7 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ApplicationContextInfoTest {
 
-    // 스프링 컨테이너 생성
+    // ApplicationContext 인터페이스의 구현체
     AnnotationConfigApplicationContext annotAc = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
