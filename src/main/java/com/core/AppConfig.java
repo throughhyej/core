@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Bean
+    @Bean /** 싱글톤으로 관리되는 빈 **/
     public MemberRepository memberRepository() {
         /** 회원 DB 확정 시, 변경 **/
         return new MemoryMemberRepository();
