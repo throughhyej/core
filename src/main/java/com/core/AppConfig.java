@@ -20,21 +20,25 @@ public class AppConfig {
     @Bean /** 싱글톤으로 관리되는 빈 **/
     public MemberRepository memberRepository() {
         /** 회원 DB 확정 시, 변경 **/
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     @Bean
     public DiscountPolicy discountPolicy() {
+        System.out.println("call AppConfig.discountPolicy");
         /** 할인 정책 변경 시, 변경 **/
         // return new FixDiscountPolicy();
         return new RateDiscountPolicy();
