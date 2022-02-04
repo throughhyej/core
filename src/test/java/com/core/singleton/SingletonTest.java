@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 public class SingletonTest {
 
@@ -44,5 +45,50 @@ public class SingletonTest {
 
         Assertions.assertThat(memberService1).isSameAs(memberService2);
 
+    }
+
+    @Test
+    @DisplayName("Stateful, 상태유지로 설계된 싱글톤 객체 사용 시 문제점")
+    public void useStatefulSingleton() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(Singleton.class);
+        StatefulSingleton statefulSingleton1 = ac.getBean("statefulSingleton", StatefulSingleton.class);
+        StatefulSingleton statefulSingleton2 = ac.getBean("statefulSingleton", StatefulSingleton.class);
+
+        statefulSingleton1.order("order1", 10000);
+        statefulSingleton2.order("order2", 20000);
+
+        /* statefulSingleton1의 price는 10000인데, 20000이 됨 */
+        System.out.println("statefulSingleton1.getPrice() : " + statefulSingleton1.getPrice());
+
+        Assertions.assertThat(statefulSingleton1).isSameAs(statefulSingleton2);
+
+    }
+
+    @Test
+    @DisplayName("Stateful -> Stateless 수정")
+    public void useStatelessSingleton() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(Singleton.class);
+        StatelessSingleton statelessSingleton1 = ac.getBean("statelessSingleton", StatelessSingleton.class);
+        StatelessSingleton statelessSingleton2 = ac.getBean("statelessSingleton", StatelessSingleton.class);
+
+        int price1 = statelessSingleton1.order("order1", 10000);
+        int price2 = statelessSingleton2.order("order2", 20000);
+
+        System.out.println("price1 = " + price1);
+
+        Assertions.assertThat(statelessSingleton1).isSameAs(statelessSingleton2);
+        Assertions.assertThat(price1).isEqualTo(10000);
+    }
+
+    public static class Singleton {
+        @Bean
+        public StatefulSingleton statefulSingleton() {
+            return new StatefulSingleton();
+        }
+
+        @Bean
+        public StatelessSingleton statelessSingleton() {
+            return new StatelessSingleton();
+        }
     }
 }
