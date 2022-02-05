@@ -1,5 +1,9 @@
 package com.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService {
 
     // 인터페이스와 구현체 모두에 의존 > SOLID의 DIP 위반
@@ -8,6 +12,7 @@ public class MemberServiceImpl implements MemberService {
     // SOLID의 DIP 준수
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    /* 수동 Bean 등록 */
+
     @Bean /** 싱글톤으로 관리되는 빈 **/
     public MemberRepository memberRepository() {
         /** 회원 DB 확정 시, 변경 **/
