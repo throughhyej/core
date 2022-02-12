@@ -23,6 +23,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	/** web 라이브러리 **/
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
 	/** lombok 설정 추가 **/
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
