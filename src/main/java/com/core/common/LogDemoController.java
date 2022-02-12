@@ -21,7 +21,7 @@ public class LogDemoController {
      **
      ** 해결 방법 1.
      ** spring의 ObjectProvider 혹은 javax의 Provider 사용
-     ** 다만, DI 해주는 소스에 보두 추가해야해서 번거롭다.
+     ** 다만, DI 해주는 소스에 모두 추가해야해서 번거롭다.
      **
      ** 해결 방법 2.
      ** MyLogger.java에 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS) 사용

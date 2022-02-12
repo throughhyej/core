@@ -15,6 +15,6 @@ public class LogDemoService {
 
     public void logic(String id) {
         MyLogger myLogger = loggerProvider.get();
-        myLogger.log("service id " + id);
+        myLogger.log("service id : " + id);
     }
 }
